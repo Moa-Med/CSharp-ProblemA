@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {   
+            //the distances 
+            double x1 = 1, x2, y1, y2, p;
+            int i = 0;
+            
+            //list to store the results
+            List<String> list = new List<String>();
+            string[] t;
+            //allows us to repete till we pass 0
+            while ( x1!=0)
+            {   
+                t = Console.ReadLine().Split(' ');
+                x1 = Convert.ToDouble(t[0]);
+            if (x1 != 0) { 
+                y1 = Convert.ToDouble(t[1]);
+                x2 = Convert.ToDouble(t[2]);
+                y2 = Convert.ToDouble(t[3]);
+                p = Convert.ToDouble(t[4]);
+                list.Add(Test(x1, y1, x2, y2, p));
+                i++;
+                }
+            } 
+
+            foreach (var value in list)
+            {
+                Console.WriteLine(value);
+            }
+            Console.ReadLine();
+
+        }
+        public static String Test(double x1, double y1, double x2, double y2, double p)
+        {
+            double part1, part2;
+           
+            part1 = Math.Pow(Math.Abs(x1 - x2), p);
+            part2 = Math.Pow(Math.Abs(y1 - y2), p);
+
+          return String.Format("{0:0.0000000000}", Math.Pow(part1 + part2, (float)1 / p));
+             
+        }
+    }
+   
+}
